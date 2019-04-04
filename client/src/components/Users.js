@@ -7,7 +7,7 @@ export default function Users(props) {
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
-            props.history.push('/loginregister');
+            window.setTimeout(() => {props.history.push('/loginregister')}, 2000);
         }
     },[]);
 
@@ -28,10 +28,13 @@ export default function Users(props) {
     return (
         <div className="users">
             {
-                users.map(user => (
-                    <User user={user}/>
-                ))
+                localStorage.getItem('token')
+                    ? users.map(user => (
+                        <User key={user.id} user={user}/>
+                    ))
+                    : <p>You are not authed to see this page. Redirecting!</p>
             }
+            
         </div>
     )
 }
