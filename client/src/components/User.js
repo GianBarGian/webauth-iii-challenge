@@ -1,0 +1,9 @@
+import React from 'react';
+
+export default function User({ user }) {
+    return (
+        <div className="user">
+            <p>{user.username}</p>
+        </div>
+    )
+}
